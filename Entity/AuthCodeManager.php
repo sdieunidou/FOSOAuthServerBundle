@@ -61,7 +61,7 @@ class AuthCodeManager extends BaseAuthCodeManager
     public function updateAuthCode(AuthCodeInterface $authCode)
     {
         $this->em->persist($authCode);
-        $this->em->flush();
+        $this->em->flush($authCode);
     }
 
     /**
@@ -70,7 +70,7 @@ class AuthCodeManager extends BaseAuthCodeManager
     public function deleteAuthCode(AuthCodeInterface $authCode)
     {
         $this->em->remove($authCode);
-        $this->em->flush();
+        $this->em->flush($authCode);
     }
 
     /**
