@@ -68,7 +68,7 @@ class ClientManager extends BaseClientManager
     public function updateClient(ClientInterface $client)
     {
         $this->em->persist($client);
-        $this->em->flush();
+        $this->em->flush($client);
     }
 
     /**
@@ -77,6 +77,6 @@ class ClientManager extends BaseClientManager
     public function deleteClient(ClientInterface $client)
     {
         $this->em->remove($client);
-        $this->em->flush();
+        $this->em->flush($client);
     }
 }
