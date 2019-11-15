@@ -60,8 +60,10 @@ class AuthCodeManager extends BaseAuthCodeManager
      */
     public function updateAuthCode(AuthCodeInterface $authCode)
     {
-        $this->em->persist($authCode);
-        $this->em->flush($authCode);
+        $em->transactional(function($em) use($authCode) {
+            $this->em->persist($authCode);
+            $this->em->flush($authCode);
+        });
     }
 
     /**
