@@ -67,8 +67,10 @@ class TokenManager extends BaseTokenManager
      */
     public function updateToken(TokenInterface $token)
     {
-        $this->em->persist($token);
-        $this->em->flush($token);
+        $em->transactional(function($em) {
+            $this->em->persist($token);
+            $this->em->flush($token);
+        });
     }
 
     /**
